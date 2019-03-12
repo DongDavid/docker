@@ -34,6 +34,7 @@ php的扩展则需要在Dockerfile中修改
 
 ## 目录
 
+```
 |____docker
 | |____Dockerfile
 | |____default.conf
@@ -44,6 +45,7 @@ php的扩展则需要在Dockerfile中修改
 | | |____public
 | | | |____index.php
 | |____.gitignore
+```
 
 ## 快速上手
 
