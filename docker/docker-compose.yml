@@ -10,7 +10,7 @@ services:
     networks:
       - "lnmp"
     volumes:
-      - "./default.conf:/etc/nginx/conf.d/default.conf"
+      - "./conf.d:/etc/nginx/conf.d"
       - "$PWD/../data:/data"
   redis:
     container_name: lnmp-redis
@@ -20,7 +20,8 @@ services:
     networks:
       - "lnmp"
   php:
-    build: .
+    image: dongdavid/php-fpm:7.2
+    # build: .
     container_name: lnmp-php
     depends_on:
       - redis

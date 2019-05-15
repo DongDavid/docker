@@ -24,10 +24,11 @@ docker-compose down
 
 ## 配置文件
 
-`default.conf`是nginx的配置文件  
+`conf.d`是nginx的站点配置文件目录  
 工程文件放在data目录的app目录中  
 工程的启动文件路径默认为`./data/app/public`  
-若要修改则需要修改nginx的配置文件`default.conf`  
+默认访问路径为`http://localhost`  
+若要修改则需要修改nginx的配置文件`conf.d/*.conf`  
 php的扩展则需要在Dockerfile中修改  
 需要增加redis或者Mysql等则需要在docker-compose.yml里面修改
 
@@ -44,6 +45,9 @@ php的扩展则需要在Dockerfile中修改
 | |____app
 | | |____public
 | | | |____index.php
+| |____app1
+| | |____public
+| | | |____index.php
 | |____.gitignore
 ```
 
@@ -51,13 +55,15 @@ php的扩展则需要在Dockerfile中修改
 
 启动
 ```
-git clone https://gogs.dongdavid.com/dongdavid/docker-lnmp.git
+git clone https://gogs.dongdavid.com/dongdavid/docker.git docker-lnmp
 cd docker-lnmp
 cd data
 composer create-project topthink/think app
 cd ../docker
 docker-compose up
 ```
+
+如果需要支持多站点,则需要在nginx的配置文件中设置server_name,并且修改本机`hosts`文件
 
 删除
 ```

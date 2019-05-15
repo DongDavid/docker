@@ -1,4 +1,4 @@
-FROM php:7.2-fpm
+FROM php:7.3-fpm
 
 MAINTAINER dongdavid
 
@@ -10,8 +10,9 @@ RUN apt-get update \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd \
     && pecl install redis-4.0.1 \
-    && pecl install xdebug-2.6.0 \
-    && docker-php-ext-enable redis xdebug \
+#    && pecl install xdebug-2.6.0 \xdebug
+    && docker-php-ext-enable redis \
+    && docker-php-ext-install -j$(nproc) bcmath \
     && docker-php-ext-install -j$(nproc) pdo_mysql \
     && docker-php-ext-install -j$(nproc) mysqli 
 
