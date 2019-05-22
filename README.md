@@ -76,6 +76,10 @@ rm -rf docker-lnmp
 docker run -d --name qwerdf -p 80:80 -v $PWD:/usr/share/nginx/html nginx:latest
 ```
 
+## todolist  
+
+* 增加一个脚本用于快速创建一个站点。
+
 ## 其他
 
 (PHP镜像配置说明)[https://hub.docker.com/_/php]
